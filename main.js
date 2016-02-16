@@ -4,6 +4,32 @@ var currentTime = null;
 var layer = null;
 var map = null;
 
+
+function init(){
+	$("#slider-details").show();
+	var slider = document.getElementById("slider");
+
+	noUiSlider.create(slider, {
+		start: [ timestamps.length-1 ],
+		step: 1,
+		connect: "lower",
+		range: {
+			'min': [  0 ],
+			'max': [ timestamps.length-1 ]
+		}
+	});
+
+	slider.noUiSlider.on('update', function( values, handle ) {
+		var k = Math.round(values[handle]);
+		$("#date_field").text(timestamps[k]);
+		console.log(k);
+		update(k);
+	});
+
+}
+
+
+
 function update(time_id){
 	currentTime = timestamps[time_id];
 	console.log("currentTime: "+currentTime);
@@ -108,3 +134,4 @@ function getUniqueTimestamps(data){
  	}
  	return ts;
 }
+
