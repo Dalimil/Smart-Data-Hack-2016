@@ -1,11 +1,12 @@
 var data = null;
+var original_data = null;
 var timestamps = null;
 var layer = null;
 var map = null;
 
 function update(time_id){
 	var usedT = timestamps.slice(0, time_id+1);
-	data.children[0] = rebuild_xml(data.children[0], usedT);
+	data.children[0] = rebuild_xml(original_data.children[0], usedT);
 	display();
 }
 
@@ -45,6 +46,7 @@ $( document ).ready(function(){
 	 	timestamps = getUniqueTimestamps(xml);
 	 	console.log(timestamps);
 	 	data = xml;
+	 	original_data = xml;
 	 	display();
 	  }
 	});
