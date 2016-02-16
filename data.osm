@@ -1421,19 +1421,4 @@
   <tag k="landuse" v="construction"/>
   <tag k="name" v="Teviot Sq Rebuilt 2015"/>
  </way>
- <relation id="4614" visible="true" version="4" changeset="28912310" timestamp="2015-02-17T16:09:06Z" user="eric_" uid="1798469">
-  <member type="way" ref="5326812" role="outer"/>
-  <member type="way" ref="5855675" role="inner"/>
-  <tag k="name" v="Old Medical School"/>
-  <tag k="type" v="multipolygon"/>
-  <tag k="wheelchair" v="yes"/>
- </relation>
- <relation id="2302" visible="true" version="18" changeset="28493219" timestamp="2015-01-29T20:32:08Z" user="eric_" uid="1798469">
-  <member type="way" ref="27595323" role="outer"/>
-  <member type="way" ref="5855694" role="inner"/>
-  <member type="way" ref="5855702" role="inner"/>
-  <tag k="building" v="university"/>
-  <tag k="name" v="Hugh Robson Building"/>
-  <tag k="type" v="multipolygon"/>
- </relation>
 </osm>
