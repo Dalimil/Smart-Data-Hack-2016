@@ -21,7 +21,7 @@ function init(){
 
 	slider.noUiSlider.on('update', function( values, handle ) {
 		var k = Math.round(values[handle]);
-		$("#date_field").text(timestamps[k]);
+		$("#date_field").text("TimeDate: "+(new Date(timestamps[k])).toDateString());
 		console.log(k);
 		update(k);
 	});
