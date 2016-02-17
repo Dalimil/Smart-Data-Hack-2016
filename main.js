@@ -4,37 +4,66 @@ var currentTime = null;
 var layer = null;
 var map = null;
 var compareLen = 10;
+var sliderCreated = false;
 
 function init(){
-	$("#slider-details").show();
-	var slider = document.getElementById("slider");
+	var sw = map.getBounds().getSouthWest();
+	var ne = map.getBounds().getNorthEast();
+	var url = "http://api.openstreetmap.org/api/0.6/map?bbox="+sw.lng+","+sw.lat+","+ne.lng+","+ne.lat;
+	console.log("Downloading data... "+url);
+	$.ajax({
+	  url: url,
+	  //url: "data.osm",
+	  dataType: "xml",
+	  success: function (xml) {
+	  	console.log("Data downloaded");
+	 	data = osmtogeojson(xml);
+	 	console.log(data);
+	 	removePoints();
+	 	console.log(data);
+	 	timestamps = getUniqueTimestamps(data);
+	 	console.log(timestamps);
+	 	update(timestamps.length-1);
 
-	noUiSlider.create(slider, {
-		start: [ timestamps.length-1 ],
-		step: 1,
-		connect: "lower",
-		range: {
-			'min': [  0 ],
-			'max': [ timestamps.length-1 ]
-		}
-	});
+	 	$("#slider-details").show();
+		var slider = $("#slider");
+		slider.noUiSlider({
+			start: [ timestamps.length-1 ],
+			step: 1,
+			connect: "lower",
+			range: {
+				'min': [  0 ],
+				'max': [ timestamps.length-1 ]
+			}
+		}, true);
 
-	slider.noUiSlider.on('update', function( values, handle ) {
-		var k = Math.round(values[handle]);
-		$("#date_field").text("TimeDate: "+(new Date(timestamps[k])).toDateString());
+		var k = Math.round($("#slider").val());
+		$("#date_field").text("Date: "+(new Date(timestamps[k])).toDateString());
 		console.log(k);
 		update(k);
-	});
+		$("#render-details").show();
 
+		slider.on({
+			slide: function() {
+				var k = Math.round($("#slider").val());
+				$("#date_field").text("Date: "+(new Date(timestamps[k])).toDateString());
+				console.log(k);
+				update(k);
+			}
+		});
+	  }
+
+	});
 }
 
 function updateOnZoom(){
 	var z = map.getZoom();
 	if(z >= 17){
-		$("#render-section").show();
+		$("#render-button").show();
 		$("#render-warn").hide();
 	}else{
-		$("#render-section").hide();
+		//$("#render-section").hide();
+		$("#render-button").hide();
 		$("#render-warn").show();
 	}
 }
@@ -74,7 +103,7 @@ function display(){
 	});
   	layer.setStyle({color: 'black', fillColor: 'blue', fillOpacity: 0.5 });
   	layer.addTo(map);
-  	map.fitBounds(layer.getBounds());
+  	//map.fitBounds(layer.getBounds());
 
   	/*
 	layer = new L.OSM.DataLayer(data)
@@ -87,7 +116,7 @@ function display(){
 $( document ).ready(function(){
 	$("#map").css('width', $(document).width());
 	$("#map").css('height', $(document).height());
-	map = L.map('map').setView([50, 0], 3);
+	map = L.map('map').setView([44, 0.36], 17);//[50, 0], 3);
 
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZGhoaGhoaGhoaGgiLCJhIjoiY2lrcGRrenhrMDBhaXc4bHMwNXd3emszbiJ9.GSEKdLMRDLkp5HJozOsw_g', {
 		maxZoom: 18,
@@ -97,30 +126,12 @@ $( document ).ready(function(){
 		id: 'mapbox.streets'
 	}).addTo(map);
 
-	var sw = map.getBounds()._southWest;
-	var ne = map.getBounds()._northEast;
-
 	map.on('zoomend', function() {
 	    updateOnZoom();
 	});
 
-	//new L.OSM.Mapnik().addTo(map);
-	$.ajax({
-	  //url: "http://api.openstreetmap.org/api/0.6/map?bbox="+sw.lon+","+sw.lat+","+ne.lon+","+ne.lat;
-	  url: "data.osm",
-	  dataType: "xml",
-	  success: function (xml) {
-	 	data = osmtogeojson(xml);
-	 	console.log(data);
-	 	removePoints();
-	 	console.log(data);
-	 	timestamps = getUniqueTimestamps(data);
-	 	console.log(timestamps);
-	 	update(timestamps.length-1);
-	  }
-	});
-
-	
+	updateOnZoom();
+	//new L.OSM.Mapnik().addTo(map);	
 });
 
 function removePoints(){
