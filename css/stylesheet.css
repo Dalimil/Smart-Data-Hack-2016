@@ -32,7 +32,7 @@ mark{
 .maininfo{
 	text-align: center;
 	display: block;
-   	margin : 0 auto;
+  margin : 0 auto;
 }
 
 .maininfo h1{
@@ -145,6 +145,55 @@ INFO BUTTON STYLES
 }
 
 /*********************
-SEARCH BOX
+SLIDER STYLES
 *********************/
 
+button.ui-btn.ui-shadow.ui-corner-all{
+  background-color:#2980b9;
+  border-color:transparent;
+  text-shadow:none;
+  color:white;
+  width:50%;
+  border-radius: 0;
+}
+
+.ui-shadow{
+  -webkit-box-shadow:none;
+  -moz-box-shadow:none;
+  box-shadow:none;
+}
+
+#slider-details{
+position: fixed;
+z-index: 999999;
+left: 3rem;
+bottom: 5rem;
+}
+
+#render-button{
+  display:none;
+  position: fixed;
+  z-index: 999999;
+  left: 3rem;
+  bottom: 2rem;
+  width:350px;
+}
+
+#render-button button{
+  text-transform: uppercase;
+}
+
+#render-warn{
+  color: black; 
+  display: none;
+  text-transform:uppercase;
+  position: fixed;
+  z-index: 999999;
+  left: 3rem;
+  bottom: 3rem;
+  text-shadow:none;
+}
+
+#date_field{
+  text-shadow:none;
+}

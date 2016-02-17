@@ -29,17 +29,20 @@
 	<input type="text" id="txtautocomplete" placeholder="Search for places" style="height:1rem"/>
 	</div>
 
-	<div id="render-warn" style="position: absolute; left: 50px; bottom: 20px; color: black; display: none;">
-		<b>Zoom closer to be able to view timeline.</b>
-	</div>
 
-	<div id="render-section" style="position: absolute; left: 60px; bottom: 60px;width:300px;">
-		<div id="slider-details" style="display: none;">
-			<div id="slider"></div>
-			<b><p id="date_field">TimeDate</p></b>
+	<div id="box">
+		<div id="render-warn">
+			<b>Zoom closer to be able to view timeline.</b>
 		</div>
-		<div id="render-button" style="display: none;">
-		    <button onclick="init();">Show timeline</button>
+
+		<div id="render-section" style="position: absolute; left: 60px; bottom: 60px;width:300px;">
+			<div id="slider-details" style="display: none;">
+				<div id="slider"></div>
+				<b><p id="date_field">TimeDate</p></b>
+			</div>
+			<div id="render-button" >
+			    <button onclick="init();">Show timeline</button>
+			</div>
 		</div>
 	</div>
 </body>
