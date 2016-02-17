@@ -3,7 +3,6 @@
 <head>
 	<title>Leaflet Quick Start Guide Example</title>
 	<meta charset="utf-8" />
-
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
@@ -11,39 +10,69 @@
 	<script src="leaflet-osm.js"></script>
 	<script src="http://maps.googleapis.com/maps/api/js?v=3.exp&signed in=true&libraries=places"></script>
 	<script src="google-maps-search.js"></script>
-	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	<script src="slider/jquery.nouislider.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 	<script src="main.js"></script>
-	<link rel="stylesheet" href="slider/jquery.nouislider.min.css" />
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
-	<link rel="stylesheet" href="css/jquery.nouislider.min.css" />
-	<link rel="stylesheet" href="css/foundation.css" />
-    <link rel="stylesheet" href="css/app.css" />
-    <link rel="stylesheet" href="css/stylesheet.css" />
-
+    <link rel="stylesheet" href="slider/jquery.nouislider.min.css" />
+        <link rel="stylesheet" href="css/stylesheet.css" />
 </head>
 <body>
-	<div style="position: absolute; left: 0px; top: 0px;" id="map"></div>
-	<div class= "searchbox" style="position: absolute; left:50px; top: 10px;z-index: 1;width: 25em;">
-		<input type="text" id="txtautocomplete" placeholder="Search for places" style="height:1rem"/>
+	<nav id="mynavbar">
+	  <div class="nav-wrapper">
+	  	<ul class="center brand-logo">
+	    <li id="render-button">
+	    	<!-- http://materializecss.com/color.html -->
+		   <button onclick="Materialize.toast('Downloading data...', 3000); init();" class="light-blue accent-4 btn-large waves-effect waves-light" type="submit" name="action">Show timeline
+    			<i class="material-icons right">send</i>
+ 			</button>
+ 		</li>
+ 		<li>
+ 			<div id="render-warn">
+				<b>Zoom closer to view timeline.</b>
+			</div>
+		</li>
+		</ul>
+
+		<ul class="right" id="render-section" style="padding-right: 30px;">
+			<li class="slider-details" style="font-size: 2em;display: none;" id="date_field"></li>
+		</ul>
+
+	      <div class="left" style="width:400px;">
+	        <div class="input-field">
+	          <input id="txtautocomplete" placeholder="Search for places" type="search" required>
+	          <label for="search"><i class="material-icons">search</i></label>
+	          <i class="material-icons">close</i>
+	        </div>
+	      </div>
+
+	  </div>
+  	</nav>
+
+  	<div style="position: absolute;z-index: -1;" id="map"></div>
+
+  	<div class="slider-details"><div style="position: absolute; right: 50px; top: 80px; width: 300px;" id="slider"></div></div> <!-- http://refreshless.com/nouislider/more/ -->
+
+	<div class="logo">
+	  <a href="http://www.msf.org/"><img src="http://cdn.msf.org/sites/msf.org/files/msf_international_logo_colour_rgb-215x93xpng24.png" alt="MSF Logo"></a>
+	  <a href="http://www.missingmaps.org/"><img src="http://www.missingmaps.org/img/mm_logo.png" alt="Missing Maps"></a>
 	</div>
 
-
-	<div id="box">
-		<div id="render-warn">
-			<b>Zoom closer to be able to view timeline.</b>
+	<a class="modal-trigger waves-effect waves-light" style="position: absolute; bottom: 20px; right: 20px; " href="#popup1"><i class="medium material-icons">info</i></a>
+	<div id="popup1" class="modal">
+	  <div class="modal-content">
+	    <h2>Volunteers helping map water points <br> in communities across the world</h2>
+	    <p>
+	      Knowing the location of water points across the world, we are able to maintain them, reducting Cholera infectons in vulnerable communities. This map shows the impact made by contributers so far. Search a specific location and drag the timescale along to view the water points plotted.
+	    </p>
+	    <div style="background-color: #2980B9;">
+		  <img src="img/illustration.svg" alt="Water Illustration">
 		</div>
-
-		<div id="render-section" style="position: absolute; left: 60px; bottom: 60px;width:300px;">
-			<div id="slider-details" style="display: none;">
-				<div id="slider"></div>
-				<b><p id="date_field">TimeDate</p></b>
-			</div>
-			<div id="render-button" >
-			    <button onclick="init();">Show timeline</button>
-			</div>
-		</div>
+	  </div>
 	</div>
+
+         
 </body>
 </html>

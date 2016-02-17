@@ -25,7 +25,7 @@ function init(){
 	 	console.log(timestamps);
 	 	update(timestamps.length-1);
 
-	 	$("#slider-details").show();
+	 	$(".slider-details").show();
 		var slider = $("#slider");
 		slider.noUiSlider({
 			start: [ timestamps.length-1 ],
@@ -38,15 +38,14 @@ function init(){
 		}, true);
 
 		var k = Math.round($("#slider").val());
-		$("#date_field").text("Date: "+(new Date(timestamps[k])).toDateString());
+		$("#date_field").text((new Date(timestamps[k])).toDateString());
 		console.log(k);
 		update(k);
-		$("#render-details").show();
 
 		slider.on({
 			slide: function() {
 				var k = Math.round($("#slider").val());
-				$("#date_field").text("Date: "+(new Date(timestamps[k])).toDateString());
+				$("#date_field").text((new Date(timestamps[k])).toDateString());
 				console.log(k);
 				update(k);
 			}
@@ -62,7 +61,6 @@ function updateOnZoom(){
 		$("#render-button").show();
 		$("#render-warn").hide();
 	}else{
-		//$("#render-section").hide();
 		$("#render-button").hide();
 		$("#render-warn").show();
 	}
@@ -114,8 +112,13 @@ function display(){
 }
 
 $( document ).ready(function(){
+	$('.modal-trigger').leanModal();
 	$("#map").css('width', $(document).width());
-	$("#map").css('height', $(document).height());
+	var barH = $("#mynavbar").height();
+	$("#slider").css('top', (barH + 20)+"px");
+	$("#slider").css('width', ($(document).width()/3)+"px");
+	$("#map").css('top', barH);
+	$("#map").css('height', $(document).height()-barH);
 	map = L.map('map').setView([44, 0.36], 17);//[50, 0], 3);
 /*
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZGhoaGhoaGhoaGgiLCJhIjoiY2lrcGRrenhrMDBhaXc4bHMwNXd3emszbiJ9.GSEKdLMRDLkp5HJozOsw_g', {
