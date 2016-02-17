@@ -3,7 +3,7 @@ var timestamps = null;
 var currentTime = null;
 var layer = null;
 var map = null;
-
+var compareLen = 10;
 
 function init(){
 	$("#slider-details").show();
@@ -28,7 +28,16 @@ function init(){
 
 }
 
-
+function updateOnZoom(){
+	var z = map.getZoom();
+	if(z >= 17){
+		$("#render-section").show();
+		$("#render-warn").hide();
+	}else{
+		$("#render-section").hide();
+		$("#render-warn").show();
+	}
+}
 
 function update(time_id){
 	currentTime = timestamps[time_id];
@@ -60,7 +69,7 @@ function display(){
 		},
 		filter: function(feature, layer) {
 			if(feature.geometry.type == 'Point') return false; // todo?
-		    return (feature.properties.meta.timestamp.substr(0, 8) <= currentTime.substr(0,8));
+		    return (feature.properties.meta.timestamp.substr(0, compareLen) <= currentTime.substr(0,compareLen));
 	    }
 	});
   	layer.setStyle({color: 'black', fillColor: 'blue', fillOpacity: 0.5 });
@@ -76,6 +85,8 @@ function display(){
 }
 
 $( document ).ready(function(){
+	$("#map").css('width', $(document).width());
+	$("#map").css('height', $(document).height());
 	map = L.map('map').setView([50, 0], 3);
 
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZGhoaGhoaGhoaGgiLCJhIjoiY2lrcGRrenhrMDBhaXc4bHMwNXd3emszbiJ9.GSEKdLMRDLkp5HJozOsw_g', {
@@ -88,6 +99,10 @@ $( document ).ready(function(){
 
 	var sw = map.getBounds()._southWest;
 	var ne = map.getBounds()._northEast;
+
+	map.on('zoomend', function() {
+	    updateOnZoom();
+	});
 
 	//new L.OSM.Mapnik().addTo(map);
 	$.ajax({
@@ -126,8 +141,8 @@ function getUniqueTimestamps(data){
 
 	ts = ts.sort();
  	for(var i=ts.length-2;i>=0;i--){
- 		var a = ts[i+1].substr(0, 8);
- 		var b = ts[i].substr(0, 8);
+ 		var a = ts[i+1].substr(0, compareLen);
+ 		var b = ts[i].substr(0, compareLen);
  		if(a == b){
  			ts.splice(i+1, 1);
  		}

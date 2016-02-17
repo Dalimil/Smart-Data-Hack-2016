@@ -21,15 +21,22 @@
 
 </head>
 <body>
-	<div style="margin: 50px;">
-	<input type="text" id="txtautocomplete" style="width:200px" placeholder="Search for places"/>
-	<div id="map" style="width: 100%; height: 300px;"></div>
-
-	<div id="slider-details" style="display: none;">
-		<div id="slider"></div>
-		<p id="date_field">TimeDate</p>
+	<div style="position: absolute; left: 0px; top: 0px;" id="map"></div>
+	<div style="position: absolute; left:80px; top: 10px;z-index: 1;width: 25em;">
+		<input type="text" id="txtautocomplete" style="box-shadow: 3px 3px 5px 5px #999999;" placeholder="Search for places"/>
 	</div>
-    <button onclick="init();">Display</button>
-    </div>
+
+	<div id="render-warn" style="position: absolute; left: 20px; bottom: 20px; color: red; display: none;">
+		Zoom closer to be able to view timeline.
+	</div>
+
+	<div id="render-section" style="position: absolute; left: 20px; bottom: 100px;">
+		<div id="slider-details" style="display: none;">
+			<div id="slider"></div>
+			<p id="date_field">TimeDate</p>
+		</div>
+	    <button onclick="init();">Show timeline</button>
+	</div>
+
 </body>
 </html>
