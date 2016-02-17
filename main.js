@@ -7,6 +7,8 @@ var compareLen = 10;
 var sliderCreated = false;
 
 function init(){
+	$("#init-button").addClass('disabled');
+	$("#myloader").show();
 	var sw = map.getBounds().getSouthWest();
 	var ne = map.getBounds().getNorthEast();
 	var url = "http://api.openstreetmap.org/api/0.6/map?bbox="+sw.lng+","+sw.lat+","+ne.lng+","+ne.lat;
@@ -50,6 +52,8 @@ function init(){
 				update(k);
 			}
 		});
+		$("#myloader").hide();
+		$("#init-button").removeClass('disabled');
 	  }
 
 	});
@@ -116,6 +120,7 @@ $( document ).ready(function(){
 	$("#map").css('width', $(document).width());
 	var barH = $("#mynavbar").height();
 	$("#slider").css('top', (barH + 20)+"px");
+	$("#myloader").css('top', (barH-8)+"px");
 	$("#slider").css('width', ($(document).width()/3)+"px");
 	$("#map").css('top', barH);
 	$("#map").css('height', $(document).height()-barH);
