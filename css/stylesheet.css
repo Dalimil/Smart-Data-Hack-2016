@@ -47,9 +47,9 @@ mark{
 }
 
 
-input{
+.searchbox{
 	width:100%;
-	height:2.9rem;
+	height:2.8rem;
 }
 
 
@@ -143,3 +143,8 @@ INFO BUTTON STYLES
 .content{
 	max-width: 95%;
 }
+
+/*********************
+SEARCH BOX
+*********************/
+
