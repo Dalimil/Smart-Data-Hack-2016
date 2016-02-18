@@ -2,13 +2,49 @@
 GENERAL STYLES
 *********************/
 
-.render-warn b{
-  font-size: 1rem;
-
+.searchbar a{
+  color:#0288d1;
+  padding-top:0.4rem;
 }
 
+.searchbar input[type="text"] {
+    color:white;
+}
+
+.searchbar [type="text"]:focus{
+  border-bottom:1px solid #9e9e9e;
+}
+
+#render-warn b{
+  font-size: 1.3rem;
+  font-weight:500;
+}
+
+button#init-button{
+  font-size: 1.3rem;
+  text-transform: lowercase;
+}
+
+#init-button{
+  color:#0288d1;
+}
+
+
+.modal-content h3{
+  text-transform:uppercase;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color:#0288d1; 
+}
+
+#popup1{
+  background-color:white;
+}
+
+
+
 body{
-background-color: #2980b9;
+background-color:#0288d1;
 }
 
 mark{
@@ -65,20 +101,22 @@ mark{
 LOGO STYLES
 *********************/
 
-.logo{
+/*.logo{
   position: absolute;
   bottom: 10px;
   left: 20px;
 	max-width: 20%;
-}
+}*/
 
 .logo img{
 	height:4rem;
   padding: 5px;
+  margin-top:0.5rem;
 }
 
 .logo a{
 	display: inline-block;
+  margin-right:1rem;
 }
 
 /*********************

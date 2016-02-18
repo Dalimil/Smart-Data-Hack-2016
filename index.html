@@ -21,7 +21,7 @@
 
 </head>
 <body>
-	<div id="intro" style="width: 100%; height: auto; background-color: #2980b9;">
+	<div id="intro" class="light-blue darken-2" style="width: 100%; height: auto; background-color: #2980b9;">
 		<button onclick="skipIntro();">Get lost</button>
 
 			<div class="illustration">
@@ -34,8 +34,18 @@
 
 			<div class= "searchbar row">
 			    <div class="col s12">
+<<<<<<< Updated upstream
 				        <div class="col s10"> <input id="txtautocomplete2" type="text" placeholder="Search location"> </div>
 				        <div class="col s2"> <a href="#" onclick="skipIntro();" class="waves-effect waves-light btn">Go</a> </div>
+=======
+<<<<<<< HEAD
+				        <div class="col s11"> <input type="text" placeholder="Search location"> </div>
+				        <div class="col s1"> <a href="#" class="waves-effect waves-light btn  blue-grey lighten-5 material-icons">search</a> </div>
+=======
+				        <div class="col s10"> <input id="txtautocomplete2" type="text" placeholder="Search location"> </div>
+				        <div class="col s2"> <a href="#" onclick="skipIntro();" class="waves-effect waves-light btn">Go</a> </div>
+>>>>>>> origin/master
+>>>>>>> Stashed changes
       			</div>
    			</div>
 	</div>
@@ -47,6 +57,12 @@
 		    <p>
 		      Knowing the location of water points across the world, we are able to maintain them, reducting Cholera infectons in vulnerable communities. This map shows the impact made by contributers so far. Search a specific location and drag the timescale along to view the water points plotted.
 		    </p>
+
+				<div class="logo">
+				  	<a href="http://www.msf.org/"><img src="http://cdn.msf.org/sites/msf.org/files/msf_international_logo_colour_rgb-215x93xpng24.png" alt="MSF Logo"></a>
+				  	<a href="http://www.missingmaps.org/"><img src="http://wiki.openstreetmap.org/w/images/a/a3/Missing-Maps-logo.jpg" alt="Missing Maps"></a>
+				</div>
+
 		  </div>
 		 </div>
 
@@ -56,13 +72,12 @@
 </div> -->
 
 	<div id="main">
-		<nav id="mynavbar">
+		<nav id="mynavbar" class="light-blue darken-2">
 		  <div class="nav-wrapper">
 		  	<ul class="center brand-logo">
 		    <li id="render-button">
 		    	<!-- http://materializecss.com/color.html -->
-			   <button id="init-button" onclick="Materialize.toast('Downloading data...', 2000); init();" class="light-blue accent-4 btn-large waves-effect waves-light" type="submit" name="action">Show timeline
-	    			<i class="material-icons right">send</i>
+			   <button id="init-button" onclick="Materialize.toast('Downloading data...', 2000); init();" class="blue-grey lighten-5 btn waves-effect waves-light" type="submit" name="action" >Show timeline
 	 			</button>
 	 		</li>
 	 		<li>
@@ -73,7 +88,7 @@
 			</ul>
 
 			<ul class="right" id="render-section" style="padding-right: 30px;">
-				<li class="slider-details" style="font-size: 2em;display: none;" id="date_field"></li>
+				<li class="slider-details" style="font-size: 1rem;display: none;" id="date_field"></li>
 			</ul>
 
 		      <div class="left" style="width:400px;">
@@ -92,11 +107,7 @@
 	  	 <div id="myloader" style="position: absolute; left: 0px; top: 0px;z-index: 2;display: none;" class="progress"> <div class="indeterminate"></div> </div>
 	  	<div class="slider-details" style="display: none;"><div style="box-shadow: 1px 1px 5px 0px #888888; position: absolute; right: 50px; top: 80px; width: 300px;" id="slider"></div></div> <!-- http://refreshless.com/nouislider/more/ -->
 
-	  	<div class="slider-details" id="animation-button" onclick="playAnimation();" style="position: absolute; right: 50px; top: 80px;display: none;"><a class="btn-floating btn-large waves-effect waves-light red"><i id="player-b" class="material-icons">play_arrow</i></a></div>
-
-		<div class="logo">
-		  <a href="http://www.msf.org/"><img src="http://cdn.msf.org/sites/msf.org/files/msf_international_logo_colour_rgb-215x93xpng24.png" alt="MSF Logo"></a>
-		  <a href="http://www.missingmaps.org/"><img src="http://www.missingmaps.org/img/mm_logo.png" alt="Missing Maps"></a>
+	  	<div class="slider-details" id="animation-button" onclick="playAnimation();" style="position: absolute; right: 50px; top: 80px;display: none;"><a class="btn-floating btn-large waves-effect waves-light light-blue darken-2"><i id="player-b" class="material-icons">play_arrow</i></a></div>
 		</div>
 
 	</div>
