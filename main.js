@@ -5,7 +5,7 @@ var layer = null;
 var map = null;
 var compareLen = 10;
 var sliderCreated = false;
-
+/* OSM in PBF format here: http://download.geofabrik.de/ */
 
 function initIntro(){
 	//$("#intro").css("width", $(document).width());
