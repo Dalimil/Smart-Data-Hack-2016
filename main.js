@@ -76,6 +76,41 @@ function update(time_id){
 	display();
 }
 
+
+var animation = null;
+var animationStep = -1;
+
+function updateAnimation(){
+	animationStep += 1;
+	console.log("anim: "+animationStep);
+	if(animationStep >= timestamps.length){
+		cancelAnimation();
+		return;
+	}
+	$("#slider").val(animationStep);
+	$("#date_field").text((new Date(timestamps[animationStep])).toDateString());
+	update(animationStep);
+}
+
+function cancelAnimation(){
+	console.log("animation ended");
+	clearInterval(animation);
+	animation = null;
+	$("#player-b").html("play_arrow");
+}
+
+function playAnimation(){
+	if(timestamps == null) return;
+
+	animationStep = -1;
+	if(animation != null){
+		cancelAnimation();
+		return;
+	}
+	$("#player-b").html("stop");
+	animation = setInterval(updateAnimation, 1000);
+}
+
 function fromTimestamp(str){
     return new Date(str).getTime();   
 }
@@ -120,6 +155,7 @@ $( document ).ready(function(){
 	$("#map").css('width', $(document).width());
 	var barH = $("#mynavbar").height();
 	$("#slider").css('top', (barH + 20)+"px");
+	$("#animation-button").css('top', (barH+60)+"px");
 	$("#myloader").css('top', (barH-8)+"px");
 	$("#slider").css('width', ($(document).width()/3)+"px");
 	$("#map").css('top', barH);
