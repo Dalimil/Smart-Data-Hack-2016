@@ -6,6 +6,15 @@ var map = null;
 var compareLen = 10;
 var sliderCreated = false;
 
+function initIntro(){
+	$("#intro").show();
+	$("#main").hide();
+}
+function skipIntro(){
+	$("#intro").hide();
+	$("#main").show();
+}
+
 function init(){
 	$("#init-button").addClass('disabled');
 	$("#myloader").show();
@@ -185,6 +194,7 @@ $( document ).ready(function(){
 
 	updateOnZoom();
 	//new L.OSM.Mapnik().addTo(map);	
+	initIntro();
 });
 
 function removePoints(){

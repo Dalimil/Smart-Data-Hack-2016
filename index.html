@@ -20,62 +20,66 @@
         <link rel="stylesheet" href="css/stylesheet.css" />
 </head>
 <body>
-	<nav id="mynavbar">
-	  <div class="nav-wrapper">
-	  	<ul class="center brand-logo">
-	    <li id="render-button">
-	    	<!-- http://materializecss.com/color.html -->
-		   <button id="init-button" onclick="Materialize.toast('Downloading data...', 2000); init();" class="light-blue accent-4 btn-large waves-effect waves-light" type="submit" name="action">Show timeline
-    			<i class="material-icons right">send</i>
- 			</button>
- 		</li>
- 		<li>
- 			<div id="render-warn">
-				<b>Zoom closer to view timeline.</b>
-			</div>
-		</li>
-		</ul>
-
-		<ul class="right" id="render-section" style="padding-right: 30px;">
-			<li class="slider-details" style="font-size: 2em;display: none;" id="date_field"></li>
-		</ul>
-
-	      <div class="left" style="width:400px;">
-	        <div class="input-field">
-	          <input id="txtautocomplete" placeholder="Search for places" type="search" required>
-	          <label for="search"><i class="material-icons">search</i></label>
-	          <i class="material-icons">close</i>
-	        </div>
-	      </div>
-
-	  </div>
-  	</nav>
-
-  	<div style="position: absolute;z-index: -1;" id="map"></div>
-
-  	 <div id="myloader" style="position: absolute; left: 0px; top: 0px;z-index: 2;display: none;" class="progress"> <div class="indeterminate"></div> </div>
-  	<div class="slider-details" style="display: none;"><div style="box-shadow: 1px 1px 5px 0px #888888; position: absolute; right: 50px; top: 80px; width: 300px;" id="slider"></div></div> <!-- http://refreshless.com/nouislider/more/ -->
-
-  	<div class="slider-details" id="animation-button" onclick="playAnimation();" style="position: absolute; right: 50px; top: 80px;display: none;"><a class="btn-floating btn-large waves-effect waves-light red"><i id="player-b" class="material-icons">play_arrow</i></a></div>
-
-	<div class="logo">
-	  <a href="http://www.msf.org/"><img src="http://cdn.msf.org/sites/msf.org/files/msf_international_logo_colour_rgb-215x93xpng24.png" alt="MSF Logo"></a>
-	  <a href="http://www.missingmaps.org/"><img src="http://www.missingmaps.org/img/mm_logo.png" alt="Missing Maps"></a>
+	<div id="intro" style="background-color: #2980b9;">
+		<button onclick="skipIntro();">Get lost</button>
 	</div>
+	<div id="main">
+		<nav id="mynavbar">
+		  <div class="nav-wrapper">
+		  	<ul class="center brand-logo">
+		    <li id="render-button">
+		    	<!-- http://materializecss.com/color.html -->
+			   <button id="init-button" onclick="Materialize.toast('Downloading data...', 2000); init();" class="light-blue accent-4 btn-large waves-effect waves-light" type="submit" name="action">Show timeline
+	    			<i class="material-icons right">send</i>
+	 			</button>
+	 		</li>
+	 		<li>
+	 			<div id="render-warn">
+					<b>Zoom closer to view timeline.</b>
+				</div>
+			</li>
+			</ul>
 
-	<a class="modal-trigger waves-effect waves-light" style="position: absolute; bottom: 20px; right: 20px; " href="#popup1"><i class="medium material-icons">info</i></a>
-	<div id="popup1" class="modal">
-	  <div class="modal-content">
-	    <h2>Volunteers helping map water points <br> in communities across the world</h2>
-	    <p>
-	      Knowing the location of water points across the world, we are able to maintain them, reducting Cholera infectons in vulnerable communities. This map shows the impact made by contributers so far. Search a specific location and drag the timescale along to view the water points plotted.
-	    </p>
-	    <div style="background-color: #2980B9;">
-		  <img src="img/illustration.svg" alt="Water Illustration">
+			<ul class="right" id="render-section" style="padding-right: 30px;">
+				<li class="slider-details" style="font-size: 2em;display: none;" id="date_field"></li>
+			</ul>
+
+		      <div class="left" style="width:400px;">
+		        <div class="input-field">
+		          <input id="txtautocomplete" placeholder="Search for places" type="search" required>
+		          <label for="search"><i class="material-icons">search</i></label>
+		          <i class="material-icons">close</i>
+		        </div>
+		      </div>
+
+		  </div>
+	  	</nav>
+
+	  	<div style="position: absolute;z-index: -1;" id="map"></div>
+
+	  	 <div id="myloader" style="position: absolute; left: 0px; top: 0px;z-index: 2;display: none;" class="progress"> <div class="indeterminate"></div> </div>
+	  	<div class="slider-details" style="display: none;"><div style="box-shadow: 1px 1px 5px 0px #888888; position: absolute; right: 50px; top: 80px; width: 300px;" id="slider"></div></div> <!-- http://refreshless.com/nouislider/more/ -->
+
+	  	<div class="slider-details" id="animation-button" onclick="playAnimation();" style="position: absolute; right: 50px; top: 80px;display: none;"><a class="btn-floating btn-large waves-effect waves-light red"><i id="player-b" class="material-icons">play_arrow</i></a></div>
+
+		<div class="logo">
+		  <a href="http://www.msf.org/"><img src="http://cdn.msf.org/sites/msf.org/files/msf_international_logo_colour_rgb-215x93xpng24.png" alt="MSF Logo"></a>
+		  <a href="http://www.missingmaps.org/"><img src="http://www.missingmaps.org/img/mm_logo.png" alt="Missing Maps"></a>
 		</div>
-	  </div>
-	</div>
 
+		<a class="modal-trigger waves-effect waves-light" style="position: absolute; bottom: 20px; right: 20px; " href="#popup1"><i class="medium material-icons">info</i></a>
+		<div id="popup1" class="modal">
+		  <div class="modal-content">
+		    <h2>Volunteers helping map water points <br> in communities across the world</h2>
+		    <p>
+		      Knowing the location of water points across the world, we are able to maintain them, reducting Cholera infectons in vulnerable communities. This map shows the impact made by contributers so far. Search a specific location and drag the timescale along to view the water points plotted.
+		    </p>
+		    <div style="background-color: #2980B9;">
+			  <img src="img/illustration.svg" alt="Water Illustration">
+			</div>
+		  </div>
+		</div>
+	</div>
          
 </body>
 </html>
