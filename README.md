@@ -7,7 +7,7 @@ We built a visualization tool for the history of contributions/edits/additions/c
 Everything is rendered on top of current OpenStreetMap tiles. We allow the user to click through and view changes done in a given time period and we also provide a 'play button' to show an animation.  
 We believe that this is a great way to show the impact that OSM contributors have.
 
-In addition to that, we extended our map by creating a layer with available water points in Africa (we had to pre-download this data due to its size). This allows anybody to easily find clause water sources.  
+In addition to that, we extended our map by creating a layer with available water points in Africa (we had to pre-download this data due to its size). This allows anybody to easily find close water sources.  
 Although we focused on water wells, this idea can be easily extended to show any kind of information recorded in OSM data, such as hospitals, landmarks, railways,...
 
 **Technologies used:** OpenStreetMaps, Leaflet, Mapbox + OSM API, OSM XML, OSM PBF + jQuery, JavaScript, CSS, Material design, Python,...
