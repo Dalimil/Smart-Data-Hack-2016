@@ -8,7 +8,7 @@ var sliderCreated = false;
 
 function initIntro(){
 	$("#intro").css("width", $(document).width()); 
-	$("#intro").css("height", $(document).width()); 
+	$("#intro").css("height", $(document).height()); 
 	$("#intro").show();
 	$("#main").hide();
 }
