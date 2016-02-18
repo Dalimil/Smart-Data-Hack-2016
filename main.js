@@ -137,13 +137,12 @@ var geojsonMarkerOptions = {
     fillOpacity: 0.8
 };
 
-var DropletIcon = L.Icon.extend({
-    options: {
-        iconUrl: 'img/droplet.png',
-        iconSize:     [38, 95],
-        iconAnchor:   [22, 94],
-        popupAnchor:  [-3, -76]
-    }
+var dropletIcon = L.icon({
+    iconUrl: 'img/droplet2.png', //60x90
+
+    iconSize:     [6, 9], // size of the icon
+    iconAnchor:   [3, 9], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, -4.5] // point from which the popup should open relative to the iconAnchor
 });
 
 function loadWaterLayer(){
@@ -154,12 +153,17 @@ function loadWaterLayer(){
 	  dataType: "json",
 	  success: function (json) {
 	  	console.log("water_sources.txt loaded");
-
+	  	for(var i = 0; i < json['data'].length; i++){
+	  		var cs = json['data'][i]['coords'];
+	  		var tstamp = json['data'][i]['timestamp'];
+	  		var desc = json['data'][i]['tag'];
+	  		L.marker([cs[0], cs[1]], {icon: dropletIcon}).addTo(map).bindPopup(desc);
+	  	}
 	 	console.log(json);
 	  }
 	});
 
-	L.marker([51.5, -0.09], {icon: greenIcon}).addTo(map).bindPopup("I am a green leaf.");
+	L.marker([51.5, -0.09], {icon: dropletIcon}).addTo(map).bindPopup("I am a green leaf.");
 }
 
 function display(){
