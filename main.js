@@ -194,12 +194,10 @@ function loadWaterLayer(){
 	  		var desc = json['data'][i]['tag'];
 
 			if(desc =="water_well"){
-	  			desc="Water Well";
+	  			desc = "Water Well";
 	  		}else{
-	  			desc=="Water Tap";
+	  			desc = "Water Tap";
 	  		}
-	  		
-			L.marker([cs[0], cs[1]], {icon: dropletIcon}).addTo(map).bindPopup(desc);
 	  		markers_data.push([cs, tstamp, desc]);
 	  	}
 	 	// console.log(json);
