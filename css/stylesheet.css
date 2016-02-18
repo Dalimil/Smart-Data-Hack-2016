@@ -17,7 +17,7 @@ GENERAL STYLES
 
 
 #render-warn b{
-  font-size: 1.7rem;
+  font-size: 1.3rem;
   font-weight:300;
 }
 
@@ -35,7 +35,7 @@ button#init-button{
   text-transform:uppercase;
   font-size: 1.7rem;
   font-weight: 600;
-  color:#0288d1; 
+  color:#0288d1;
 }
 
 #popup1{
@@ -240,7 +240,7 @@ bottom: 5rem;
 }
 
 #render-warn{
-  color: black; 
+  color: black;
   display: none;
   text-transform:uppercase;
   position: fixed;
