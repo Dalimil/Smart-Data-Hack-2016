@@ -14,7 +14,7 @@ mark{
 
 
 .illustration{
-  max-width:20%;
+  width:300px;
   margin: 15rem auto 1rem auto;
 }
 
@@ -75,7 +75,6 @@ LOGO STYLES
 .logo a{
 	display: inline-block;
 }
-
 
 /*********************
 INFO BUTTON STYLES
