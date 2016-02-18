@@ -18,11 +18,10 @@ Although we focused on water wells, this idea can be easily extended to show any
 ## Screenshots
 ![Smart Data Hack 01](https://github.com/Dalimil/Smart-Data-Hack-2016/blob/master/screenshots/Screenshot_1.png)
 ![Smart Data Hack 02](https://github.com/Dalimil/Smart-Data-Hack-2016/blob/master/screenshots/Screenshot_2.png)
-![Smart Data Hack 03](https://github.com/Dalimil/Smart-Data-Hack-2016/blob/master/screenshots/Screenshot_2.png)
-![Smart Data Hack 04](https://github.com/Dalimil/Smart-Data-Hack-2016/blob/master/screenshots/Screenshot_2.png)
+![Smart Data Hack 03](https://github.com/Dalimil/Smart-Data-Hack-2016/blob/master/screenshots/Screenshot_3.png)
+![Smart Data Hack 04](https://github.com/Dalimil/Smart-Data-Hack-2016/blob/master/screenshots/Screenshot_4.png)
 
 
 
 *Beta:*
-![Smart Data Hack 05](https://github.com/Dalimil/Smart-Data-Hack-2016/blob/master/screenshots/Screenshot_beta1.png)
 ![Smart Data Hack 06](https://github.com/Dalimil/Smart-Data-Hack-2016/blob/master/screenshots/Screenshot_beta2.png)
