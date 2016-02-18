@@ -7,12 +7,15 @@ var compareLen = 10;
 var sliderCreated = false;
 
 function initIntro(){
+	$("#intro").css("width", $(document).width()); 
+	$("#intro").css("height", $(document).width()); 
 	$("#intro").show();
 	$("#main").hide();
 }
+
 function skipIntro(){
-	$("#intro").hide();
-	$("#main").show();
+	$("#intro").slideUp();
+	$("#main").show(1000);
 }
 
 function init(){
