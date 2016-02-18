@@ -80,7 +80,7 @@ function updateOnZoom(){
 	}else{
 		deleteMarkers();
 	}
-	
+
 	if(z >= 17){
 		$("#render-button").show();
 		$("#render-warn").hide();
@@ -192,6 +192,14 @@ function loadWaterLayer(){
 	  		var cs = json['data'][i]['coords'];
 	  		var tstamp = json['data'][i]['timestamp'];
 	  		var desc = json['data'][i]['tag'];
+
+			if(desc =="water_well"){
+	  			desc="Water Well";
+	  		}else{
+	  			desc=="Water Tap";
+	  		}
+	  		
+			L.marker([cs[0], cs[1]], {icon: dropletIcon}).addTo(map).bindPopup(desc);
 	  		markers_data.push([cs, tstamp, desc]);
 	  	}
 	 	// console.log(json);
