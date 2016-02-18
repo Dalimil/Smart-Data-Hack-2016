@@ -6,7 +6,7 @@ We built a visualization tool - OpenStreetMaps - history of edits/additions/chan
 
 TODO description
 
-**Team:** [Dalimil Hajek](https://github.com/dalimil), [Aiden Kwok](https://github.com/Aidenkwok), [Tilly Dyson](), [Rufat](https://github.com/rufat24)
+**Team:** [Dalimil Hajek](https://github.com/dalimil), [Aiden Kwok](https://github.com/Aidenkwok), [Tilly Dyson](https://github.com/tillydyson), [Rufat Ismaylov](https://github.com/rufat24)
 
 ## Structure
 
