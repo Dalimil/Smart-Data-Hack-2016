@@ -5,7 +5,7 @@ GENERAL STYLES
 body{
 background-color: #2980b9;
 }
-/*
+
 mark{
   background-color:transparent;
   color:white;
@@ -55,7 +55,7 @@ mark{
 .fa{
 	color:white;
 }
-*/
+
 /*********************
 LOGO STYLES
 *********************/
@@ -75,6 +75,7 @@ LOGO STYLES
 .logo a{
 	display: inline-block;
 }
+
 
 /*********************
 INFO BUTTON STYLES

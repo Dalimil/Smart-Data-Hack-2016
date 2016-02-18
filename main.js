@@ -14,7 +14,7 @@ function initIntro(){
 }
 
 function skipIntro(){
-	$("#intro").slideUp();
+	$("#intro").slideUp(700);
 	$("#main").show();
 }
 
