@@ -7,7 +7,6 @@ var compareLen = 10;
 var sliderCreated = false;
 var markers = [];
 var markers_data = [];
-var prevZoom = 3;
 /* OSM in PBF format here: http://download.geofabrik.de/ */
 
 function initIntro(){
@@ -76,9 +75,12 @@ function init(){
 
 function updateOnZoom(){
 	var z = map.getZoom();
-	if(z >= 9 && prevZoom < z){
+	if(z >= 9){
 		reloadMarkers();
+	}else{
+		deleteMarkers();
 	}
+	
 	if(z >= 17){
 		$("#render-button").show();
 		$("#render-warn").hide();
@@ -86,7 +88,13 @@ function updateOnZoom(){
 		$("#render-button").hide();
 		$("#render-warn").show();
 	}
-	prevZoom = z;
+}
+
+function updateOnDrag(){
+	var z = map.getZoom();
+	if(z >= 9){
+		reloadMarkers();
+	}
 }
 
 function update(time_id){
@@ -267,6 +275,10 @@ $( document ).ready(function(){
 	map.on('zoomend', function() {
 	    updateOnZoom();
 	});
+	map.on('dragend', function() {
+		updateOnDrag();
+	});
+
 
 	updateOnZoom();
 	
