@@ -10,13 +10,7 @@ TODO description
 
 ## Structure
 
-Server in /Server
-
-Android app in /Android-app
-
-Client-Company-Website-Demo in /Demo-company
-
-Google App Engine files included for convenience
+todo
 
 ## Screenshots
 
