@@ -5,7 +5,9 @@ var layer = null;
 var map = null;
 var compareLen = 10;
 var sliderCreated = false;
-var markers = null;
+var markers = [];
+var markers_data = [];
+var prevZoom = 3;
 /* OSM in PBF format here: http://download.geofabrik.de/ */
 
 function initIntro(){
@@ -74,6 +76,9 @@ function init(){
 
 function updateOnZoom(){
 	var z = map.getZoom();
+	if(z >= 9 && prevZoom < z){
+		reloadMarkers();
+	}
 	if(z >= 17){
 		$("#render-button").show();
 		$("#render-warn").hide();
@@ -81,6 +86,7 @@ function updateOnZoom(){
 		$("#render-button").hide();
 		$("#render-warn").show();
 	}
+	prevZoom = z;
 }
 
 function update(time_id){
@@ -146,28 +152,51 @@ var dropletIcon = L.icon({
     popupAnchor:  [0, -4.5] // point from which the popup should open relative to the iconAnchor
 });
 
-function loadWaterLayer(){
-	if(map == null) return;
+function reloadMarkers(){
+	if(map == null || markers_data == null) return;
 
-	$.ajax({
-	  url: 'data/water_sources2.json',
-	  dataType: "json",
-	  success: function (json) {
-	  	console.log("water_sources.txt loaded");
-	  	for(var i = 0; i < 30;i++){//json['data'].length; i++){
-	  		var cs = json['data'][i]['coords'];
-	  		var tstamp = json['data'][i]['timestamp'];
-	  		var desc = json['data'][i]['tag'];
+  	deleteMarkers();
+  	var sw = map.getBounds().getSouthWest();
+	var ne = map.getBounds().getNorthEast();
+	var count = 0;
+  	for(var i = 0; i < markers_data.length; i++){
+  		var cs = markers_data[i][0];
+  		var lg = cs[0];
+  		var lt = cs[1];
+  		if(lg <= ne.lng && lg >= sw.lng && lt <= ne.lat && lt >= sw.lat){
+  			count += 1;
+	  		var tstamp = markers_data[i][1];
+	  		var desc = markers_data[i][2];
 	  		var m = L.marker([cs[1], cs[0]], {icon: dropletIcon}).addTo(map).bindPopup(desc);
 	  		markers.push(m);
 	  	}
-	 	console.log(json);
+  	}
+  	console.log(count);
+}
+
+function loadWaterLayer(){
+	$.ajax({
+	  url: 'data/water_sources.json',
+	  dataType: "json",
+	  success: function (json) {
+	  	console.log("water_sources.txt loaded");
+	  	for(var i = 0; i < json['data'].length; i++){
+	  		var cs = json['data'][i]['coords'];
+	  		var tstamp = json['data'][i]['timestamp'];
+	  		var desc = json['data'][i]['tag'];
+	  		markers_data.push([cs, tstamp, desc]);
+	  	}
+	 	// console.log(json);
 	  }
 	});
 }
 
 function deleteMarkers(){
-	
+	for(var i=0;i<markers.length;i++){
+		map.removeLayer(markers[i]);
+	}
+	markers = [];
+}
 
 function display(){
 	if(layer != null){
@@ -233,6 +262,7 @@ $( document ).ready(function(){
 			'Imagery © <a href="http://mapbox.com">Mapbox</a>'
 	}).addTo(map);
 
+	loadWaterLayer();
 
 	map.on('zoomend', function() {
 	    updateOnZoom();
@@ -240,7 +270,6 @@ $( document ).ready(function(){
 
 	updateOnZoom();
 	
-	loadWaterLayer();
 	initIntro();
 });
 
