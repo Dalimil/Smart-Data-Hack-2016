@@ -102,12 +102,13 @@ function cancelAnimation(){
 function playAnimation(){
 	if(timestamps == null) return;
 
-	animationStep = -1;
 	if(animation != null){
 		cancelAnimation();
 		return;
 	}
-	$("#player-b").html("stop");
+	animationStep = Math.round($("#slider").val());
+	
+	$("#player-b").html("pause");
 	animation = setInterval(updateAnimation, 1000);
 }
 
