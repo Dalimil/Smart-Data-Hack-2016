@@ -16,7 +16,6 @@ In addition to that, we extended our map by creating a layer with available wate
 ![Smart Data Hack 01](https://github.com/Dalimil/Smart-Data-Hack-2016/blob/master/screenshots/Screenshot_1.png)
 ![Smart Data Hack 02](https://github.com/Dalimil/Smart-Data-Hack-2016/blob/master/screenshots/Screenshot_2.png)
 
-Beta
-
+*Beta*
 ![Smart Data Hack 03](https://github.com/Dalimil/Smart-Data-Hack-2016/blob/master/screenshots/Screenshot_beta1.png)
 ![Smart Data Hack 04](https://github.com/Dalimil/Smart-Data-Hack-2016/blob/master/screenshots/Screenshot_beta2.png)
