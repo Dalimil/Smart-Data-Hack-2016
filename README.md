@@ -14,4 +14,5 @@ todo
 
 ## Screenshots
 
-![01](https://github.com/Dalimil/Smart-Data-Hack-2016/blob/master/screenshots/Screenshot_beta.png)
+![Smart Data Hack 01](https://github.com/Dalimil/Smart-Data-Hack-2016/blob/master/screenshots/Screenshot_beta.png)
+![Smart Data Hack 02](https://github.com/Dalimil/Smart-Data-Hack-2016/blob/master/screenshots/Screenshot_beta2.png)
