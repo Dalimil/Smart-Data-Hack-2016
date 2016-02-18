@@ -5,6 +5,7 @@ var layer = null;
 var map = null;
 var compareLen = 10;
 var sliderCreated = false;
+var markers = null;
 /* OSM in PBF format here: http://download.geofabrik.de/ */
 
 function initIntro(){
@@ -149,22 +150,24 @@ function loadWaterLayer(){
 	if(map == null) return;
 
 	$.ajax({
-	  url: 'data/water_sources.txt',
+	  url: 'data/water_sources2.json',
 	  dataType: "json",
 	  success: function (json) {
 	  	console.log("water_sources.txt loaded");
-	  	for(var i = 0; i < json['data'].length; i++){
+	  	for(var i = 0; i < 30;i++){//json['data'].length; i++){
 	  		var cs = json['data'][i]['coords'];
 	  		var tstamp = json['data'][i]['timestamp'];
 	  		var desc = json['data'][i]['tag'];
-	  		L.marker([cs[0], cs[1]], {icon: dropletIcon}).addTo(map).bindPopup(desc);
+	  		var m = L.marker([cs[1], cs[0]], {icon: dropletIcon}).addTo(map).bindPopup(desc);
+	  		markers.push(m);
 	  	}
 	 	console.log(json);
 	  }
 	});
-
-	L.marker([51.5, -0.09], {icon: dropletIcon}).addTo(map).bindPopup("I am a green leaf.");
 }
+
+function deleteMarkers(){
+	
 
 function display(){
 	if(layer != null){
