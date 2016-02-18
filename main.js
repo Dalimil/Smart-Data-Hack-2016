@@ -7,8 +7,8 @@ var compareLen = 10;
 var sliderCreated = false;
 
 function initIntro(){
-	//$("#intro").css("width", $(document).width()); 
-	//$("#intro").css("height", $(document).height()); 
+	//$("#intro").css("width", $(document).width());
+	//$("#intro").css("height", $(document).height());
 	$("#intro").show();
 	$("#main").hide();
 }
@@ -119,13 +119,13 @@ function playAnimation(){
 		return;
 	}
 	animationStep = Math.round($("#slider").val());
-	
+
 	$("#player-b").html("pause");
 	animation = setInterval(updateAnimation, 1000);
 }
 
 function fromTimestamp(str){
-    return new Date(str).getTime();   
+    return new Date(str).getTime();
 }
 
 var geojsonMarkerOptions = {
@@ -168,7 +168,7 @@ $( document ).ready(function(){
 	$("#map").css('width', $(document).width());
 	var barH = $("#mynavbar").height();
 	$("#slider").css('top', (barH + 20)+"px");
-	$("#animation-button").css('top', (barH+60)+"px");
+	$("#animation-button").css('top', (barH+12)+"px");
 	$("#myloader").css('top', (barH-8)+"px");
 	$("#slider").css('width', ($(document).width()/3)+"px");
 	$("#map").css('top', barH);
@@ -196,7 +196,7 @@ $( document ).ready(function(){
 	});
 
 	updateOnZoom();
-	//new L.OSM.Mapnik().addTo(map);	
+	//new L.OSM.Mapnik().addTo(map);
 	initIntro();
 });
 
@@ -226,4 +226,3 @@ function getUniqueTimestamps(data){
  	}
  	return ts;
 }
-
