@@ -153,11 +153,11 @@ var geojsonMarkerOptions = {
 };
 
 var dropletIcon = L.icon({
-    iconUrl: 'img/droplet2.png', //60x90
+    iconUrl: 'img/droplet2.png', //60x90 -> 2/3
 
-    iconSize:     [6, 9], // size of the icon
-    iconAnchor:   [3, 9], // point of the icon which will correspond to marker's location
-    popupAnchor:  [0, -4.5] // point from which the popup should open relative to the iconAnchor
+    iconSize:     [10, 15], // size of the icon
+    iconAnchor:   [5, 15], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, -7.5] // point from which the popup should open relative to the iconAnchor
 });
 
 function reloadMarkers(){
