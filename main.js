@@ -7,8 +7,8 @@ var compareLen = 10;
 var sliderCreated = false;
 
 function initIntro(){
-	//$("#intro").css("width", $(document).width()); 
-	//$("#intro").css("height", $(document).height()); 
+	//$("#intro").css("width", $(document).width());
+	//$("#intro").css("height", $(document).height());
 	$("#intro").show();
 	$("#main").hide();
 }
@@ -119,13 +119,13 @@ function playAnimation(){
 		return;
 	}
 	animationStep = Math.round($("#slider").val());
-	
+
 	$("#player-b").html("pause");
 	animation = setInterval(updateAnimation, 1000);
 }
 
 function fromTimestamp(str){
-    return new Date(str).getTime();   
+    return new Date(str).getTime();
 }
 
 var geojsonMarkerOptions = {
@@ -168,20 +168,22 @@ $( document ).ready(function(){
 	$("#map").css('width', $(document).width());
 	var barH = $("#mynavbar").height();
 	$("#slider").css('top', (barH + 20)+"px");
-	$("#animation-button").css('top', (barH+60)+"px");
+	$("#animation-button").css('top', (barH+12)+"px");
 	$("#myloader").css('top', (barH-8)+"px");
 	$("#slider").css('width', ($(document).width()/3)+"px");
 	$("#map").css('top', barH);
 	$("#map").css('height', $(document).height()-barH);
 	map = L.map('map').setView([50, 0], 3);//[44, 0.36], 17)
 
-	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZGhoaGhoaGhoaGgiLCJhIjoiY2lrcGRrenhrMDBhaXc4bHMwNXd3emszbiJ9.GSEKdLMRDLkp5HJozOsw_g', {
+	/*L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZGhoaGhoaGhoaGgiLCJhIjoiY2lrcGRrenhrMDBhaXc4bHMwNXd3emszbiJ9.GSEKdLMRDLkp5HJozOsw_g', {
 		maxZoom: 18,
 		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
 			'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
 			'Imagery © <a href="http://mapbox.com">Mapbox</a>',
 		id: 'mapbox.streets'
 	}).addTo(map);
+
+	*/
 
 
 /*	L.tileLayer('http://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', {
@@ -191,12 +193,20 @@ $( document ).ready(function(){
 			'Imagery © <a href="http://mapbox.com">Mapbox</a>'
 	}).addTo(map);*/
 
+
+L.tileLayer('http://worldtiles4.waze.com/tiles/{z}/{x}/{y}.png', {
+		maxZoom: 18,
+		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+			'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+			'Imagery © <a href="http://mapbox.com">Mapbox</a>'
+	}).addTo(map);
+
 	map.on('zoomend', function() {
 	    updateOnZoom();
 	});
 
 	updateOnZoom();
-	//new L.OSM.Mapnik().addTo(map);	
+	//new L.OSM.Mapnik().addTo(map);
 	initIntro();
 });
 
@@ -226,4 +236,3 @@ function getUniqueTimestamps(data){
  	}
  	return ts;
 }
-
