@@ -27,8 +27,7 @@ function init(){
 	var url = "http://api.openstreetmap.org/api/0.6/map?bbox="+sw.lng+","+sw.lat+","+ne.lng+","+ne.lat;
 	console.log("Downloading data... "+url);
 	$.ajax({
-	  url: url,
-	  //url: "data.osm",
+	  url: url, //url: "data.osm",
 	  dataType: "xml",
 	  success: function (xml) {
 	  	console.log("Data downloaded");
@@ -138,6 +137,31 @@ var geojsonMarkerOptions = {
     fillOpacity: 0.8
 };
 
+var DropletIcon = L.Icon.extend({
+    options: {
+        iconUrl: 'img/droplet.png',
+        iconSize:     [38, 95],
+        iconAnchor:   [22, 94],
+        popupAnchor:  [-3, -76]
+    }
+});
+
+function loadWaterLayer(){
+	if(map == null) return;
+
+	$.ajax({
+	  url: 'data/water_sources.txt',
+	  dataType: "json",
+	  success: function (json) {
+	  	console.log("water_sources.txt loaded");
+
+	 	console.log(json);
+	  }
+	});
+
+	L.marker([51.5, -0.09], {icon: greenIcon}).addTo(map).bindPopup("I am a green leaf.");
+}
+
 function display(){
 	if(layer != null){
 		map.removeLayer(layer);
@@ -187,15 +211,15 @@ $( document ).ready(function(){
 	*/
 
 
-/*	L.tileLayer('http://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', {
+	/*L.tileLayer('http://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', {
 		maxZoom: 18,
 		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
 			'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
 			'Imagery © <a href="http://mapbox.com">Mapbox</a>'
 	}).addTo(map);*/
+	//new L.OSM.Mapnik().addTo(map);
 
-
-L.tileLayer('http://worldtiles4.waze.com/tiles/{z}/{x}/{y}.png', {
+	L.tileLayer('http://worldtiles4.waze.com/tiles/{z}/{x}/{y}.png', {
 		maxZoom: 18,
 		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
 			'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -207,7 +231,8 @@ L.tileLayer('http://worldtiles4.waze.com/tiles/{z}/{x}/{y}.png', {
 	});
 
 	updateOnZoom();
-	//new L.OSM.Mapnik().addTo(map);
+	
+	loadWaterLayer();
 	initIntro();
 });
 
