@@ -135,7 +135,29 @@ SLIDER STYLES
   background: #0091ea;
 }
 
-.screenshot{
-  width:100%;
+
+#key{
+  max-width:60%;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+#key p{
+  text-transform: uppercase;
+  font-size:0.7rem;
+  font-weight: 500;
+}
+
+#waterkey{
+  margin-right: 3rem;
+}
+
+.keyicon{
+  width:50%;
   height:auto;
+}
+
+.bluearea{
+  height:102px;
+  width: auto;
 }
