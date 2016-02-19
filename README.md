@@ -1,6 +1,7 @@
 # Smart-Data-Hack-2016 (Edinburgh, 15-19th Feb 2016)
 
-**5-day hackathon during Innovative Learning Week (ILW) at the University of Edinburgh**
+**5-day hackathon during Innovative Learning Week (ILW) at the University of Edinburgh**  
+**[Demo here](https://www.youtube.com/watch?v=WzWmvNUBAPs)**
 
 We built a visualization tool for the history of contributions/edits/additions/changes in OpenStreetMaps. Our project uses latest OSM data (obtained dynamically via an API) to display history of contributions to the map in a given area.  
 
